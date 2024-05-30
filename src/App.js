@@ -1,11 +1,7 @@
-import './App.css';
+import Body from "./pages/Body";
 
 function App() {
-  return (
-    <div className="App">
-      <h1 className="font-bold text-green-400">This is Netflix gpt learing project usig react</h1>
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;
