@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   createUserWithEmailAndPassword,
@@ -13,9 +12,9 @@ import {
 } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
+import { AVATAR_URL, BACKGROUND_LOGO } from "../utils/constants";
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -29,7 +28,7 @@ const Login = () => {
   const updateUserProfile = () => {
     updateProfile(auth.currentUser, {
       displayName: fullName.current.value,
-      photoURL: "https://avatars.githubusercontent.com/u/2682366?v=4",
+      photoURL: AVATAR_URL,
     })
       .then(() => {
         // Profile updated!
@@ -52,7 +51,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up
         updateUserProfile();
-        navigate("/browse");
         // ...
       })
       .catch((error) => {
@@ -73,7 +71,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/browse");
         // ...
       })
       .catch((error) => {
@@ -110,8 +107,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="
-        https://assets.nflxext.com/ffe/siteui/vlv3/058eee37-6c24-403a-95bd-7d85d3260ae1/3017e280-c734-4bc9-9cf3-2cdd363644e5/PK-en-20240422-POP_SIGNUP_TWO_WEEKS-perspective_WEB_51bbfc4d-6750-49fc-98f1-802c382dbd2c_large.jpg"
+          src={BACKGROUND_LOGO}
           alt="logo"
         />
       </div>
