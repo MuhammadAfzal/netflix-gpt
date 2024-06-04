@@ -106,10 +106,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src={BACKGROUND_LOGO}
-          alt="logo"
-        />
+        <img src={BACKGROUND_LOGO} alt="logo" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
